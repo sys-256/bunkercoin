@@ -45,3 +45,5 @@ The solid best way is to mine. You can use any guide and miner that supports scr
 | :------- | ------: | 
 | P2P      |   14200 |
 | RPC      |   22555 |
+
+trigger build
