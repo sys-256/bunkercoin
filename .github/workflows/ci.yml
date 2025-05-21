@@ -3,7 +3,7 @@ name: Bunkercoin Continuous Integration
 on:
   push:
     paths-ignore:
-      - '**/*.md'
+      - '**/*.mdfsda'
   pull_request:
     paths-ignore:
       - 'doc/**'
