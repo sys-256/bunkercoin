@@ -158,7 +158,7 @@ jobs:
         run: ${{ matrix.postinstall }}
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
 #      - name: SDK cache
 #        if: ${{ matrix.sdk }}
@@ -222,7 +222,7 @@ jobs:
         run: chmod +x depends/${{ matrix.host }}/bin/bunkercoin* bunkercoin-*-*-setup* || echo
         
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: bunkercoin-${{ github.sha }}-${{ matrix.name }}
           path: |
