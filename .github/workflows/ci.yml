@@ -160,14 +160,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: SDK cache
-        if: ${{ matrix.sdk }}
-        uses: actions/cache@v2
-        env:
-          cache-name: sdk
-        with:
-          path: ./depends/sdk-sources
-          key: ${{ matrix.name }}-${{ env.cache-name }}
+#      - name: SDK cache
+#        if: ${{ matrix.sdk }}
+#        uses: actions/cache@v2
+#        env:
+#          cache-name: sdk
+#        with:
+#          path: ./depends/sdk-sources
+#          key: ${{ matrix.name }}-${{ env.cache-name }}
 
       - name: Install SDK
         if: ${{ matrix.sdk }}
@@ -177,13 +177,13 @@ jobs:
           curl --location --fail $SDK_URL/MacOSX${{ matrix.sdk }}.sdk.tar.gz -o depends/sdk-sources/MacOSX${{ matrix.sdk }}.sdk.tar.gz
           tar -C depends/SDKs -xf depends/sdk-sources/MacOSX${{ matrix.sdk }}.sdk.tar.gz
 
-      - name: Dependency cache
-        uses: actions/cache@v2
-        env:
-          cache-name: depends
-        with:
-          path: ./depends/built
-          key: ${{ matrix.name }}-${{ env.cache-name }}-${{ hashFiles('depends/packages/*') }}
+#      - name: Dependency cache
+#        uses: actions/cache@v2
+#        env:
+#          cache-name: depends
+#        with:
+#          path: ./depends/built
+#          key: ${{ matrix.name }}-${{ env.cache-name }}-${{ hashFiles('depends/packages/*') }}
 
       - name: Build depends
         run: |
@@ -191,13 +191,13 @@ jobs:
           find . -type f -exec dos2unix {} \;
           make $MAKEJOBS -C depends HOST=${{ matrix.host }} ${{ matrix.dep-opts }}
 
-      - name: CCache
-        uses: actions/cache@v2
-        env:
-          cache-name: ccache
-        with:
-          path: ~/.ccache
-          key: ${{ matrix.name }}-${{ env.cache-name }}-${{ hashFiles('**/configure.ac') }}
+#      - name: CCache
+#        uses: actions/cache@v2
+#        env:
+#          cache-name: ccache
+#        with:
+#          path: ~/.ccache
+#          key: ${{ matrix.name }}-${{ env.cache-name }}-${{ hashFiles('**/configure.ac') }}
 
       - name: Build Bunkercoin
         run: |
